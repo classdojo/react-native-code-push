@@ -1,7 +1,7 @@
 {
-  "name": "react-native-code-push",
-  "version": "1000.0.0-beta",
-  "description": "React Native plugin for the CodePush service",
+  "name": "@classdojo/react-native-code-push",
+  "version": "0.1.1",
+  "description": "ClassDojo React Native plugin for the CodePush service",
   "main": "CodePush.js",
   "typings": "typings/react-native-code-push.d.ts",
   "homepage": "https://microsoft.github.io/code-push",
@@ -10,11 +10,11 @@
     "code",
     "push"
   ],
-  "author": "Microsoft Corporation",
+  "author": "ClassDojo",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/react-native-code-push"
+    "url": "https://github.com/classdojo/react-native-code-push"
   },
   "dependencies": {
     "code-push": "2.0.5",
@@ -56,7 +56,7 @@
       }
     ],
     "commands": {
-      "postlink": "node node_modules/react-native-code-push/scripts/postlink/run"
+      "postlink": "node node_modules/@classdojo/react-native-code-push/scripts/postlink/run"
     }
   }
 }

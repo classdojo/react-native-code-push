@@ -46,6 +46,7 @@ public class CodePushUpdateManager {
     }
 
     public JSONObject getCurrentPackageInfo() {
+        Log.d("CodePushUpdateManager", "getCurrentPackageInfo()");
         String statusFilePath = getStatusFilePath();
         if (!FileUtils.fileAtPathExists(statusFilePath)) {
             return new JSONObject();
@@ -60,6 +61,7 @@ public class CodePushUpdateManager {
     }
 
     public void updateCurrentPackageInfo(JSONObject packageInfo) {
+        Log.d("CodePushUpdateManager", "updateCurrentPackageInfo(" + packageInfo + ")");
         try {
             CodePushUtils.writeJsonToFile(packageInfo, getStatusFilePath());
         } catch (IOException e) {
@@ -142,6 +144,7 @@ public class CodePushUpdateManager {
     public void downloadPackage(JSONObject updatePackage, String expectedBundleFileName,
                                 DownloadProgressCallback progressCallback,
                                 String stringPublicKey) throws IOException {
+        Log.d("CodePushUpdateManager", "downloading package...");
         String newUpdateHash = updatePackage.optString(CodePushConstants.PACKAGE_HASH_KEY, null);
         String newUpdateFolderPath = getPackageFolderPath(newUpdateHash);
         String newUpdateMetadataPath = CodePushUtils.appendPathComponent(newUpdateFolderPath, CodePushConstants.PACKAGE_FILE_NAME);
@@ -294,6 +297,7 @@ public class CodePushUpdateManager {
     }
 
     public void installPackage(JSONObject updatePackage, boolean removePendingUpdate) {
+        Log.d("CodePushUpdateManager", "installPackage()");
         String packageHash = updatePackage.optString(CodePushConstants.PACKAGE_HASH_KEY, null);
         JSONObject info = getCurrentPackageInfo();
 
@@ -322,6 +326,7 @@ public class CodePushUpdateManager {
     }
 
     public void rollbackPackage() {
+        Log.d("CodePushUpdateManager", "rollbackPackage()");
         JSONObject info = getCurrentPackageInfo();
         String currentPackageFolderPath = getCurrentPackageFolderPath();
         FileUtils.deleteDirectoryAtPath(currentPackageFolderPath);
@@ -331,6 +336,7 @@ public class CodePushUpdateManager {
     }
 
     public void downloadAndReplaceCurrentBundle(String remoteBundleUrl, String bundleFileName) throws IOException {
+        Log.d("CodePushUpdateManager", "downloadAndReplaceCurrentBundle()");
         URL downloadUrl;
         HttpURLConnection connection = null;
         BufferedInputStream bin = null;
